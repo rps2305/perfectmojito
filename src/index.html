@@ -33,7 +33,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:site_name" content="The Perfect Mojito">
-  <meta property="og:image" content="https://www.perfectmojito.nl/images/webp/header-1200.webp">
+  <meta property="og:image" content="https://perfectmojito.nl/images/webp/header-1200.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Verfrissende Cubaanse Mojito cocktail met munt en limoen">
@@ -42,7 +42,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Perfect Mojito - De Perfecte Cubaanse Cocktail">
   <meta name="twitter:description" content="Het ultieme mojito-recept: eenvoudig, verfrissend en altijd feestelijk.">
-  <meta name="twitter:image" content="https://www.perfectmojito.nl/images/webp/header-1200.webp">
+  <meta name="twitter:image" content="https://perfectmojito.nl/images/webp/header-1200.webp">
   <meta name="twitter:image:alt" content="Verfrissende Cubaanse Mojito cocktail">
   
   <!-- Schema.org Recipe Structured Data -->
@@ -52,7 +52,7 @@
     "@type": "Recipe",
     "name": "Authentieke Cubaanse Mojito",
     "image": [
-      "https://www.perfectmojito.nl/images/webp/mojito-unsplash-800.webp"
+      "https://perfectmojito.nl/images/webp/mojito-unsplash-800.webp"
     ],
     "author": {
       "@type": "Person",
@@ -70,27 +70,44 @@
     "recipeIngredient": [
       "60 ml witte Cubaanse rum (bijv. Havana Club)",
       "30 ml vers limoensap (halve limoen)",
+      "3 limoenpartjes",
       "2 theelepels rietsuiker",
       "5-7 takjes hierbabuena (Cubaanse munt)",
+      "1 munt top (garnering)",
       "Een scheutje spuitwater",
-      "Ijsklontjes"
+      "Ijsklontjes",
+      "1 rietje"
     ],
     "recipeInstructions": [
       {
         "@type": "HowToStep",
-        "text": "Doe de rietsuiker in een groot glas. Knijp de halve limoen uit en voeg het sap toe."
+        "name": "Suiker & Limoen",
+        "text": "Doe de rietsuiker in een groot glas. Knijp de halve limoen uit en voeg het sap toe. Stamp de overgebleven limoenpartjes voorzichtig mee met de stamper om extra smaak vrij te laten komen."
       },
       {
         "@type": "HowToStep",
-        "text": "Voeg de munt toe. Stamp voorzichtig met een houten stamper — alleen de steel, niet de bladeren fijnmaken."
+        "name": "De Munt Stampen",
+        "text": "Voeg de munt toe. Stamp voorzichtig met een houten of kunststof stamper — metaal verstoort de smaak. Alleen de steel, niet de bladeren fijnmaken."
       },
       {
         "@type": "HowToStep",
-        "text": "Schenk 60 ml witte Cubaanse rum in het glas."
+        "name": "Rum Toevoegen",
+        "text": "Schenk 60 ml witte Cubaanse rum in het glas. Traditiegetrouw gebruiken Cubanen het oog als maat."
       },
       {
         "@type": "HowToStep",
-        "text": "Vul het glas met ijsklontjes. Voeg een scheutje spuitwater toe en roer voorzichtig."
+        "name": "Roeren",
+        "text": "Vul het glas met ijsklontjes — geen gemalen ijs! Voeg een scheutje spuitwater toe en roer goed met een lange lepel tot aan de bodem om de rum, suiker en limoensap te mixen. Haal de lepel eruit."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "De Munt Top",
+        "text": "Steek de top van een muntstreng boven in het glas. De geur van munt is heel belangrijk — deze top zorgt ervoor dat de essentiële oliën direct naar de neus stijgen zodra je van de cocktail geniet."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Het Rietje",
+        "text": "Steek het rietje in het glas en geniet van je perfecte Cubaanse Mojito!"
       }
     ],
     "nutrition": {
@@ -111,7 +128,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "The Perfect Mojito",
-    "url": "https://www.perfectmojito.nl/",
+    "url": "https://perfectmojito.nl/",
     "description": "Het ultieme mojito-recept: eenvoudig, verfrissend en altijd feestelijk.",
     "author": {
       "@type": "Person",
@@ -562,7 +579,15 @@
                     <span class="text-rum-400">•</span>
                     Stamp de suiker niet — laat deze natuurlijk oplossen
                   </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="text-rum-400">•</span>
+                    Gebruik een <strong>limoenpartje drijvend bovenop het ijs</strong> als garnering. Siert de cocktail en ziet er fris uit!
+                  </li>
                 </ul>
+                <picture class="mt-3 block">
+                  <source srcset="images/webp/lime-whole-400.webp 400w, images/webp/lime-whole-800.webp 800w" sizes="80px" type="image/webp">
+                  <img src="images/lime-whole.jpg" alt="Verse limoen" class="w-20 h-20 rounded-lg object-cover">
+                </picture>
               </div>
               
               <!-- Secret Tip -->
@@ -701,7 +726,7 @@
         De Hemingway Legende
       </span>
       
-      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
+      <h2 id="hemingway-heading" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
         Hemingway & <span class="italic text-rum-300">Cuba</span>
       </h2>
       
@@ -1112,5 +1137,20 @@
       });
     });
   </script>
+  
+  <!-- Matomo Analytics -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//matomo.puntuale.nl/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '4']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
 </body>
 </html>
