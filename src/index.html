@@ -146,46 +146,38 @@
   </a>
 
   <!-- Cookie consent -->
-  <div id="cookie-banner" class="relative z-30 border-b border-rum-200/60 bg-rum-50" role="region" aria-label="Cookievoorkeuren" data-nosnippet>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-6 lg:pb-8">
-      <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+  <div id="cookie-banner" class="relative z-30 border-b border-rum-200/60 bg-rum-50/95" role="region" aria-label="Cookievoorkeuren" data-nosnippet>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 lg:py-4">
+      <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div class="max-w-3xl">
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-900 mb-1">Cookievoorkeuren</p>
-          <p class="text-sm sm:text-base text-rum-800 leading-relaxed">
+          <p class="font-display text-sm sm:text-base font-bold text-rum-900 mb-1">Cookievoorkeuren</p>
+          <p class="text-xs sm:text-sm text-rum-800 leading-snug">
             We gebruiken alleen analytische cookies als je dat toestaat. Daarmee meten we anoniem via Matomo hoe de site presteert en verbeteren we de inhoud.
           </p>
         </div>
-        <div class="flex flex-col sm:flex-row gap-3 sm:items-center pb-1 sm:pb-2 lg:pb-0">
-          <button id="cookie-accept" type="button" class="btn-primary min-h-[44px] text-sm sm:text-base px-5 py-3">
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center pb-0 sm:pb-0.5 lg:pb-0">
+          <button id="cookie-accept" type="button" class="btn-primary min-h-[44px] text-xs sm:text-sm px-4 py-2.5">
             Accepteer analyse
           </button>
-          <button id="cookie-decline" type="button" class="btn-secondary min-h-[44px] text-sm sm:text-base px-5 py-3">
-            Alleen noodzakelijk
+          <button id="cookie-decline" type="button" class="btn-secondary min-h-[44px] text-xs sm:text-sm px-4 py-2.5">
+            Weiger analyse
           </button>
         </div>
       </div>
     </div>
   </div>
   
-  <!-- Top gradient bar with decorative accents -->
-  <div class="relative h-2 w-full overflow-hidden" role="presentation" aria-hidden="true">
-    <div class="absolute inset-0 bg-gradient-to-r from-rum-300 via-rum-400 via-rum-500 to-rum-600"></div>
-    <div class="absolute top-0 left-8 w-2 h-2 bg-rum-200 rounded-full transform -translate-y-1/2"></div>
-    <div class="absolute top-0 right-12 w-1.5 h-1.5 bg-rum-200 rounded-full transform -translate-y-1/2"></div>
-    <div class="absolute top-0 right-24 w-1 h-1 bg-rum-100 rounded-full transform -translate-y-1/2"></div>
-  </div>
-   
   <!-- Navigation -->
   <nav class="sticky top-0 z-40 bg-rum-50 border-b border-rum-200/30 md:bg-white" aria-label="Hoofdnavigatie">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-3 min-w-0 group">
         <picture>
           <source srcset="images/webp/logo-150.webp 150w, images/webp/logo-200.webp 200w, images/webp/logo-300.webp 300w" sizes="(max-width: 768px) 40px, 44px" type="image/webp">
           <img src="logo.png" alt="The Perfect Mojito logo" class="h-10 w-auto md:h-11 flex-shrink-0 transition-transform duration-300 group-hover:scale-105" loading="eager" width="300" height="300">
         </picture>
-        <div class="min-w-0 space-y-1">
-          <div class="text-xl md:text-[1.5rem] lg:text-[1.75rem] font-display font-bold tracking-tight text-rum-900 leading-none truncate">The Perfect Mojito</div>
-                <p class="hidden sm:block text-sm md:text-base text-rum-800 italic leading-snug max-w-[34ch]">Pour, stir, sway—let the mojito way carry you to the islands.</p>
+        <div class="min-w-0 space-y-0.5">
+          <div class="text-base md:text-lg lg:text-xl font-display font-bold tracking-tight text-rum-900 leading-none truncate">The Perfect Mojito</div>
+                <p class="hidden lg:block text-xs text-rum-700 italic leading-snug max-w-[22ch]">Pour, stir, sway.</p>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 lg:gap-8">
@@ -232,11 +224,10 @@
     
     <div class="relative z-10 text-left px-6 sm:px-8 lg:px-12 xl:px-16 w-full max-w-7xl mx-auto pt-20 sm:pt-24 lg:pt-32 pb-24 sm:pb-32">
       <div class="animate-on-scroll is-visible-on-load max-w-xl lg:max-w-2xl">
-        <span class="inline-block px-4 py-2 bg-rum-400/25 text-rum-900 font-display font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase rounded-full mb-6 sm:mb-8 lg:mb-10 ring-1 ring-rum-400/50">
-          <span class="inline-block w-2 h-2 bg-rum-500 rounded-full mr-2 animate-pulse"></span>
+        <p class="text-[0.7rem] sm:text-xs uppercase tracking-[0.24em] text-rum-700 mb-5 sm:mb-6 lg:mb-8">
           De Klassieke Cubaanse Cocktail
-        </span>
-      
+        </p>
+
         <h1 class="animate-on-scroll stagger-1 font-display font-bold text-rum-950 leading-[0.9] tracking-tight mb-6 sm:mb-8 lg:mb-10">
           <span class="block text-[clamp(3rem,10vw,6rem)] sm:text-[clamp(3.5rem,12vw,9rem)]">De <span class="text-rum-500 relative"><span class="relative z-10">Perfecte</span><span class="absolute bottom-1 left-0 w-full h-3 bg-rum-300/40 -z-10 transform -skew-x-3"></span></span></span>
           <span class="block text-[clamp(3rem,10vw,6rem)] sm:text-[clamp(3.5rem,12vw,9rem)] italic text-rum-800">Mojito</span>
@@ -594,95 +585,46 @@
               <img src="images/refreshing-mint-lemonade-summer-drink-homemade-cocktail-garnished-lime-lemons-fresh-herbs-sprinkle-ice-cool-beverage-happy-hour-socializing.jpg" alt="Verfrissende mojito met munt, limoen en ijs als voorbeeld van de perfecte bereiding" class="w-full aspect-[4/5] object-cover" loading="lazy" width="2048" height="2048">
             </picture>
             <div class="p-8 bg-gradient-to-b from-rum-50 to-white">
-              <div class="flex items-center justify-between mb-6">
-                <div>
-                  <p class="text-rum-700 font-medium text-sm uppercase tracking-wide">Bereidingstijd</p>
-                  <p class="font-display text-3xl font-bold text-rum-800">5 min</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-rum-700 font-medium text-sm uppercase tracking-wide">Alcohol</p>
-                  <p class="font-display text-3xl font-bold text-rum-800">Licht</p>
-                </div>
+              <div class="flex flex-wrap items-center gap-3 mb-5">
+                <span class="px-3 py-1 rounded-full bg-rum-100 text-rum-800 text-sm font-medium">5 min</span>
+                <span class="px-3 py-1 rounded-full bg-rum-100 text-rum-800 text-sm font-medium">Licht</span>
+                <span class="px-3 py-1 rounded-full bg-rum-100 text-rum-800 text-sm font-medium">Voor 1 glas</span>
               </div>
-              <div class="bg-rum-50 rounded-2xl p-6">
-                <p class="font-display text-lg font-bold text-rum-800 mb-3">Klassieke tips</p>
-                <ul class="space-y-2 text-rum-800 text-sm">
-                  <li class="flex gap-2 items-start">
-                    <span class="text-rum-500">•</span>
-                    Veel bartenders kiezen voor hout of kunststof; belangrijker nog is dat je zacht werkt en niet agressief stampt
-                  </li>
-                  <li class="flex gap-2 items-start">
-                    <span class="text-rum-400">•</span>
-                    Hierbabuena is traditioneel favoriet; als je die niet vindt, kies dan zachte spearmint of een andere milde muntsoort in plaats van pepermunt
-                  </li>
-                  <li class="flex gap-2 items-start">
-                    <span class="text-rum-400">•</span>
-                    Vul het glas met ijsklontjes, niet met crushed ice; zo blijft de balans langer strak
-                  </li>
-                  <li class="flex gap-2 items-start">
-                    <span class="text-rum-400">•</span>
-                    Garneer met een munttop en eventueel een limoenpartje, maar houd de basis verder eenvoudig
-                  </li>
-                  <li class="flex gap-2 items-start">
-                    <span class="text-rum-400">•</span>
-                    Persoonlijk drink ik hem graag uit het karakteristieke Hoegaarden Witbier-glas: ruim, herkenbaar en prettig voor veel ijs, munt en geur
-                  </li>
-                </ul>
-              <div class="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-3">
-                  <picture class="block">
-                    <source srcset="images/webp/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life-400.webp 400w, images/webp/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life.jpg" alt="Bos verse munt voor een klassieke mojito" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
-                  </picture>
-                  <picture class="block">
-                    <source srcset="images/webp/clear-ice-cubes-400.webp 400w, images/webp/clear-ice-cubes-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/clear-ice-cubes.jpg" alt="Heldere ijsklontjes voor een strakke mojito" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
-                  </picture>
-                  <picture class="block">
-                    <source srcset="images/webp/colorful-plastic-cup-with-straws-400.webp 400w, images/webp/colorful-plastic-cup-with-straws-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/colorful-plastic-cup-with-straws.jpg" alt="Rietjes als detail voor het serveren van cocktails" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
-                  </picture>
-                  <picture class="block">
-                    <source srcset="images/webp/hoegaarden-glas-400.webp 400w, images/webp/hoegaarden-glas-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/hoegaarden-glas.jpg" alt="Karakteristiek Hoegaarden Witbier-glas als favoriete serveerkeuze" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
-                  </picture>
-                  <picture class="block">
-                    <source srcset="images/webp/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce-400.webp 400w, images/webp/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce.jpg" alt="Verse limoenen en citrus voor garnering en sap" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
-                  </picture>
-                </div>
+              <div class="space-y-4 text-rum-800 text-sm leading-relaxed">
+                <p class="font-display text-lg font-bold text-rum-800">Klassieke tips</p>
+                <p>
+                  Veel bartenders kiezen voor hout of kunststof; belangrijker nog is dat je zacht werkt en niet agressief stampt.
+                </p>
+                <p>
+                  Hierbabuena is traditioneel favoriet; als je die niet vindt, kies dan zachte spearmint of een andere milde muntsoort in plaats van pepermunt.
+                </p>
+                <p>
+                  Vul het glas met ijsklontjes, niet met crushed ice; zo blijft de balans langer strak.
+                </p>
+                <p>
+                  Garneer met een munttop en eventueel een limoenpartje, maar houd de basis verder eenvoudig.
+                </p>
+                <p>
+                  Persoonlijk drink ik hem graag uit het karakteristieke Hoegaarden Witbier-glas: ruim, herkenbaar en prettig voor veel ijs, munt en geur.
+                </p>
               </div>
-              
-              <!-- Personal Note -->
-              <div class="mt-6 bg-gradient-to-br from-rum-700 to-rum-900 rounded-2xl p-6 text-white">
-                <div class="flex items-start gap-3 mb-3">
-                  <svg class="w-6 h-6 text-rum-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
-                  <p class="font-display text-lg font-bold">Persoonlijke twist</p>
+              <div class="mt-6 pt-5 border-t border-rum-200/70 flex flex-col sm:flex-row sm:items-start gap-4">
+                <div class="flex-1">
+                  <p class="font-display text-base font-bold text-rum-800 mb-1">Persoonlijke twist</p>
+                  <p class="text-rum-700 text-sm leading-relaxed">
+                    Wie wil afwijken van de klassieke versie kan aan het einde een klein scheutje gerijpte rum bovenop laten rusten voor extra diepte.
+                    Voor een frisse alcoholvrije top-up gebruik ik zelf vaak Albert Heijn Lemon &amp; Lime Zero.
+                  </p>
+                  <p class="text-rum-500 text-xs italic mt-3">
+                    Lekker, maar niet onderdeel van de standaard Cubaanse opbouw.
+                  </p>
                 </div>
-                <div class="grid gap-4 sm:grid-cols-[minmax(0,1fr)_150px] sm:items-center">
-                  <div>
-                    <p class="text-rum-100 text-sm leading-relaxed mb-3">
-                      Wie wil afwijken van de klassieke versie kan aan het einde een klein scheutje
-                      <strong class="text-white">gerijpte rum</strong> bovenop laten rusten voor extra diepte.
-                      Lekker, maar niet onderdeel van de standaard Cubaanse opbouw.
-                    </p>
-                    <p class="text-rum-300 text-xs italic mb-4">
-                      — een persoonlijke variatie, niet het basisrecept
-                    </p>
-                    <p class="text-rum-100 text-sm leading-relaxed">
-                      Voor een frisse alcoholvrije top-up gebruik ik zelf vaak <strong class="text-white">Albert Heijn Lemon &amp; Lime Zero</strong>.
-                      In Nederland en België is dat een makkelijke, lichte mixer die mooi aansluit op de munt en limoen.
-                    </p>
-                  </div>
-                  <figure class="justify-self-start sm:justify-self-end w-full max-w-[150px]">
-                    <picture>
-                      <source srcset="images/webp/ah-lemon-lime-zero-400.webp 400w, images/webp/ah-lemon-lime-zero-800.webp 800w" sizes="150px" type="image/webp">
-                      <img src="images/ah-lemon-lime-zero.jpg" alt="Fles Albert Heijn Lemon & Lime Zero als frisse mojito-mixer" class="w-full h-auto rounded-xl bg-white/10 p-2" loading="lazy" decoding="async" width="800" height="800">
-                    </picture>
-                    <figcaption class="mt-2 text-[11px] leading-snug text-rum-200">
-                      Mijn standaard frisse mixer.
-                    </figcaption>
-                  </figure>
-                </div>
+                <figure class="w-28 sm:w-24 sm:order-last shrink-0 self-start">
+                  <picture>
+                    <source srcset="images/webp/ah-lemon-lime-zero-400.webp 400w, images/webp/ah-lemon-lime-zero-800.webp 800w" sizes="(max-width: 639px) 112px, 96px" type="image/webp">
+                    <img src="images/ah-lemon-lime-zero.jpg" alt="Fles Albert Heijn Lemon & Lime Zero als frisse mojito-mixer" class="w-full h-auto rounded-xl bg-white/10 p-2" loading="lazy" decoding="async" width="800" height="800">
+                  </picture>
+                </figure>
               </div>
             </div>
           </div>
@@ -824,18 +766,15 @@
       </div>
       
       <!-- Famous Quotes -->
-      <div class="animate-on-scroll stagger-2 max-w-3xl mx-auto rounded-[2rem] bg-rum-400/20 p-8 md:p-10 text-left ring-1 ring-rum-400/20">
-        <svg class="w-7 h-7 text-rum-300 mb-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-        </svg>
-        <p class="font-display text-2xl md:text-3xl text-rum-100 italic leading-relaxed">
+      <div class="animate-on-scroll stagger-2 max-w-3xl mx-auto text-left">
+        <p class="font-display text-2xl md:text-3xl text-rum-100 italic leading-relaxed mb-4">
           El Floridita wordt meestal sterker met Hemingway verbonden dan La Bodeguita.
         </p>
-        <p class="text-rum-200 text-sm mt-4">
+        <p class="text-rum-200 text-sm leading-relaxed mb-4">
           De mojito-associatie leeft vooral voort omdat bars, toerisme en popcultuur elkaar zijn gaan versterken.
         </p>
-        <p class="mt-6 text-rum-100 text-sm leading-relaxed">
-          <strong>Wist je?</strong> De Papa Doble wordt veel consequenter met Hemingway verbonden dan de Mojito.
+        <p class="text-rum-100 text-sm leading-relaxed border-l border-rum-400/30 pl-4">
+          De Papa Doble wordt veel consequenter met Hemingway verbonden dan de Mojito.
           Daarom duikt hij in cocktailboeken vaker op als Daiquiri-icoon dan als mojito-ambassadeur.
         </p>
       </div>
