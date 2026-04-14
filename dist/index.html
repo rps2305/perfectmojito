@@ -144,6 +144,28 @@
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-rum-500 focus:text-white focus:rounded-lg focus:font-semibold">
     Naar hoofdinhoud
   </a>
+
+  <!-- Cookie consent -->
+  <div id="cookie-banner" class="relative z-30 border-b border-rum-200/60 bg-rum-50" role="region" aria-label="Cookievoorkeuren" data-nosnippet>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-3xl">
+          <p class="font-display text-lg sm:text-xl font-bold text-rum-900 mb-1">Cookievoorkeuren</p>
+          <p class="text-sm sm:text-base text-rum-800 leading-relaxed">
+            We gebruiken alleen analytische cookies als je dat toestaat. Daarmee meten we anoniem via Matomo hoe de site presteert en verbeteren we de inhoud.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+          <button id="cookie-accept" type="button" class="btn-primary min-h-[44px] text-sm sm:text-base px-5 py-3">
+            Accepteer analyse
+          </button>
+          <button id="cookie-decline" type="button" class="btn-secondary min-h-[44px] text-sm sm:text-base px-5 py-3">
+            Alleen noodzakelijk
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <!-- Top gradient bar with decorative accents -->
   <div class="relative h-2 w-full overflow-hidden" role="presentation" aria-hidden="true">
@@ -714,7 +736,7 @@
               <span class="w-12 h-12 rounded-full bg-white/10 text-rum-100 flex items-center justify-center font-display font-bold flex-shrink-0">2002</span>
               <div>
                 <p class="font-semibold text-rum-100">Wereldwijde popcultuurboost</p>
-                <p class="text-rum-200 text-sm">De Mojito wordt een van de meest herkenbare cocktails ter wereld.</p>
+                <p class="text-rum-200 text-sm">De James Bond-film <span class="italic">Die Another Day</span> geeft de Mojito een stevige popcultuurboost en helpt de cocktail wereldwijd herkenbaar te maken.</p>
               </div>
             </li>
             <li class="flex gap-4 items-start">
@@ -1181,21 +1203,78 @@
     
   </script>
   
-  <!-- Matomo Analytics -->
+  <!-- Cookie consent + Matomo Analytics -->
   <script>
-    if (window.location.hostname === 'perfect-mojito.nl' || window.location.hostname === 'www.perfect-mojito.nl') {
-      var _paq = window._paq = window._paq || [];
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="//matomo.puntuale.nl/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
+    (function() {
+      const productionHosts = new Set(['perfect-mojito.nl', 'www.perfect-mojito.nl']);
+      const banner = document.getElementById('cookie-banner');
+      const acceptButton = document.getElementById('cookie-accept');
+      const declineButton = document.getElementById('cookie-decline');
+      const storageKey = 'perfect-mojito-cookie-consent';
+      let matomoLoaded = false;
+
+      function safeGetConsent() {
+        try {
+          return window.localStorage.getItem(storageKey);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function safeSetConsent(value) {
+        try {
+          window.localStorage.setItem(storageKey, value);
+        } catch (error) {
+          // Storage can be blocked; keep the banner functional without failing.
+        }
+      }
+
+      function hideBanner() {
+        if (banner) {
+          banner.hidden = true;
+        }
+      }
+
+      function loadMatomo() {
+        if (matomoLoaded || !productionHosts.has(window.location.hostname)) {
+          return;
+        }
+
+        const _paq = window._paq = window._paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['setTrackerUrl', 'https://matomo.puntuale.nl/matomo.php']);
         _paq.push(['setSiteId', '4']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
-    }
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://matomo.puntuale.nl/matomo.js';
+        document.head.appendChild(script);
+        matomoLoaded = true;
+      }
+
+      function acceptConsent() {
+        safeSetConsent('accepted');
+        hideBanner();
+        loadMatomo();
+      }
+
+      function declineConsent() {
+        safeSetConsent('declined');
+        hideBanner();
+      }
+
+      const consent = safeGetConsent();
+      if (consent === 'accepted') {
+        hideBanner();
+        loadMatomo();
+      } else if (consent === 'declined') {
+        hideBanner();
+      }
+
+      acceptButton?.addEventListener('click', acceptConsent);
+      declineButton?.addEventListener('click', declineConsent);
+    })();
   </script>
-  <!-- End Matomo Code -->
 </body>
 </html>
