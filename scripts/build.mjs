@@ -57,19 +57,25 @@ function copyDirContents(sourceDir, targetDir) {
 
 function extractReferencedAssets(html) {
   const jpgs = new Set();
+  const pngs = new Set();
   const webps = new Set();
   const jpgPattern = /images\/([^\s",'?]+\.jpg)/g;
+  const pngPattern = /images\/([^\s",'?]+\.png)/g;
   const webpPattern = /images\/webp\/([^\s",'?]+\.webp)/g;
 
   for (const match of html.matchAll(jpgPattern)) {
     jpgs.add(match[1]);
   }
 
+  for (const match of html.matchAll(pngPattern)) {
+    pngs.add(match[1]);
+  }
+
   for (const match of html.matchAll(webpPattern)) {
     webps.add(match[1]);
   }
 
-  return { jpgs, webps };
+  return { jpgs, pngs, webps };
 }
 
 function makeWebp(sourceFile, outputFile, width, quality = 82) {
@@ -77,15 +83,27 @@ function makeWebp(sourceFile, outputFile, width, quality = 82) {
   run(cwebpCommand, ['-quiet', '-q', String(quality), sourceFile, '-resize', String(width), '0', '-o', outputFile]);
 }
 
+function makeJpg(sourceFile, outputFile, quality = 88) {
+  if (!magickCommand) return;
+  run(magickCommand, [sourceFile, '-strip', '-quality', String(quality), outputFile]);
+}
+
 function getWebpQuality(base) {
   if (base === 'header') return 38;
+  if (base === 'flowchart-time-mojito') return 84;
   if (base === 'cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch') return 70;
   if (base === 'refreshing-mint-lemonade-summer-drink-homemade-cocktail-garnished-lime-lemons-fresh-herbs-sprinkle-ice-cool-beverage-happy-hour-socializing') return 72;
   return 80;
 }
 
+function getJpgQuality(base) {
+  if (base === 'flowchart-time-mojito') return 88;
+  return 90;
+}
+
 const tailwindCommand = resolveCommand('tailwindcss', [path.join(root, 'node_modules', '.bin', 'tailwindcss')]);
 const cwebpCommand = resolveCommand('cwebp', ['/opt/homebrew/bin/cwebp'], { required: false });
+const magickCommand = resolveCommand('magick', ['/opt/homebrew/bin/magick'], { required: false });
 const sipsCommand = resolveCommand('sips', ['/usr/bin/sips'], { required: false });
 const sourceHtml = readFileSync(sourceHtmlPath, 'utf8');
 const referencedAssets = extractReferencedAssets(sourceHtml);
@@ -120,8 +138,24 @@ if (sipsCommand) {
 
 for (const file of referencedAssets.jpgs) {
   const source = path.join(imagesSourceDir, file);
+  if (existsSync(source)) {
+    copyFileSync(source, path.join(imagesDir, file));
+    continue;
+  }
+
+  const pngSource = path.join(root, 'images', file.replace(/\.jpg$/, '.png'));
+  if (existsSync(pngSource)) {
+    makeJpg(pngSource, path.join(imagesDir, file), getJpgQuality(path.parse(file).name));
+    continue;
+  }
+
+  console.warn(`[build] Referenced image missing: ${file}`);
+}
+
+for (const file of referencedAssets.pngs) {
+  const source = path.join(root, 'images', file);
   if (!existsSync(source)) {
-    console.warn(`[build] Referenced image missing: ${file}`);
+    console.warn(`[build] Referenced PNG missing: ${file}`);
     continue;
   }
   copyFileSync(source, path.join(imagesDir, file));
@@ -136,7 +170,9 @@ if (cwebpCommand) {
     }
 
     const [, base, width] = match;
-    const source = path.join(imagesSourceDir, `${base}.jpg`);
+    const jpgSource = path.join(imagesSourceDir, `${base}.jpg`);
+    const pngSource = path.join(root, 'images', `${base}.png`);
+    const source = existsSync(jpgSource) ? jpgSource : pngSource;
     if (!existsSync(source) && base !== 'logo') {
       console.warn(`[build] Missing source for WebP variant: ${variant}`);
       continue;
