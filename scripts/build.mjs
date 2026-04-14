@@ -137,9 +137,15 @@ if (sipsCommand) {
 }
 
 for (const file of referencedAssets.jpgs) {
-  const source = path.join(imagesSourceDir, file);
-  if (existsSync(source)) {
-    copyFileSync(source, path.join(imagesDir, file));
+  const optimizedSource = path.join(imagesSourceDir, file);
+  const localSource = path.join(root, 'images', file);
+  if (existsSync(optimizedSource)) {
+    copyFileSync(optimizedSource, path.join(imagesDir, file));
+    continue;
+  }
+
+  if (existsSync(localSource)) {
+    copyFileSync(localSource, path.join(imagesDir, file));
     continue;
   }
 
@@ -171,8 +177,9 @@ if (cwebpCommand) {
 
     const [, base, width] = match;
     const jpgSource = path.join(imagesSourceDir, `${base}.jpg`);
+    const localJpgSource = path.join(root, 'images', `${base}.jpg`);
     const pngSource = path.join(root, 'images', `${base}.png`);
-    const source = existsSync(jpgSource) ? jpgSource : pngSource;
+    const source = existsSync(jpgSource) ? jpgSource : existsSync(localJpgSource) ? localJpgSource : pngSource;
     if (!existsSync(source) && base !== 'logo') {
       console.warn(`[build] Missing source for WebP variant: ${variant}`);
       continue;
