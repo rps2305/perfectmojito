@@ -140,7 +140,7 @@ if (cwebpCommand) {
       continue;
     }
 
-    const quality = base === 'header' ? 64 : 82;
+    const quality = base === 'header' ? 58 : 82;
     makeWebp(source, path.join(webpDir, variant), Number(width), quality);
   }
 } else {

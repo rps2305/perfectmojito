@@ -131,6 +131,11 @@ html {
   position: relative;
 }
 
+.defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
 .bg-grain::before {
   content: '';
   position: absolute;
