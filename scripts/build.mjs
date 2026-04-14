@@ -77,6 +77,13 @@ function makeWebp(sourceFile, outputFile, width, quality = 82) {
   run(cwebpCommand, ['-quiet', '-q', String(quality), sourceFile, '-resize', String(width), '0', '-o', outputFile]);
 }
 
+function getWebpQuality(base) {
+  if (base === 'header') return 38;
+  if (base === 'cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch') return 70;
+  if (base === 'refreshing-mint-lemonade-summer-drink-homemade-cocktail-garnished-lime-lemons-fresh-herbs-sprinkle-ice-cool-beverage-happy-hour-socializing') return 72;
+  return 80;
+}
+
 const tailwindCommand = resolveCommand('tailwindcss', [path.join(root, 'node_modules', '.bin', 'tailwindcss')]);
 const cwebpCommand = resolveCommand('cwebp', ['/opt/homebrew/bin/cwebp'], { required: false });
 const sipsCommand = resolveCommand('sips', ['/usr/bin/sips'], { required: false });
@@ -140,8 +147,7 @@ if (cwebpCommand) {
       continue;
     }
 
-    const quality = base === 'header' ? 58 : 82;
-    makeWebp(source, path.join(webpDir, variant), Number(width), quality);
+    makeWebp(source, path.join(webpDir, variant), Number(width), getWebpQuality(base));
   }
 } else {
   console.warn('[build] cwebp not found; skipping WebP generation and relying on JPG/PNG fallbacks.');

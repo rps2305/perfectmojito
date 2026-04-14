@@ -134,7 +134,9 @@
   }
   </script>
   
-  <link rel="stylesheet" href="output.css">
+  <link rel="preload" href="output.css" as="style">
+  <link rel="stylesheet" href="output.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="output.css"></noscript>
 </head>
 <body class="bg-rum-50 font-body text-citrus-dark antialiased overflow-x-hidden">
   
@@ -308,7 +310,7 @@
           <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-rum-200/50">
             <picture>
               <source srcset="images/webp/cocktail-glass-400.webp 400w, images/webp/cocktail-glass-800.webp 800w, images/webp/cocktail-glass-1200.webp 1200w" sizes="(max-width: 1024px) 100vw, 50vw" type="image/webp">
-              <img src="images/cocktail-glass.jpg" alt="Verfrissende Mojito cocktail" class="w-full h-auto aspect-[4/3] object-cover" loading="lazy" width="864" height="648">
+              <img src="images/cocktail-glass.jpg" alt="Verfrissende Mojito cocktail" class="w-full h-auto aspect-[4/3] object-cover" loading="lazy" decoding="async" width="864" height="648">
             </picture>
           </div>
           <!-- Badge - positioned better for mobile -->
@@ -337,7 +339,7 @@
       <div class="relative mb-8 sm:mb-12 animate-on-scroll overflow-hidden rounded-[2rem] ring-1 ring-rum-200/60 bg-white">
         <picture>
           <source srcset="images/webp/cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch-400.webp 400w, images/webp/cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch-800.webp 800w, images/webp/cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch-1200.webp 1200w" sizes="100vw" type="image/webp">
-          <img src="images/cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch.jpg" alt="Overzicht van mojito-ingrediënten met munt, limoen, ijs en glazen op een baropstelling" class="w-full h-[21rem] sm:h-96 lg:h-[26.5rem] object-cover" loading="lazy" width="1536" height="1024">
+          <img src="images/cocktail-setup-mixed-drinks-mint-lime-ice-glasses-gin-rum-lemonade-hawaiian-punch.jpg" alt="Overzicht van mojito-ingrediënten met munt, limoen, ijs en glazen op een baropstelling" class="w-full h-[21rem] sm:h-96 lg:h-[26.5rem] object-cover" loading="lazy" decoding="async" width="1536" height="1024">
         </picture>
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-citrus-dark/85 via-citrus-dark/45 to-transparent p-5 sm:p-6">
           <p class="font-display text-2xl sm:text-3xl text-white mb-2">Alles wat je nodig hebt, niets wat afleidt</p>
@@ -345,53 +347,56 @@
         </div>
       </div>
       
-      <!-- Mobile: 2 columns | Tablet: 3 columns | Desktop: 5 columns -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-        <!-- Rum -->
-        <div class="ingredient-card animate-on-scroll stagger-1 p-5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl ring-1 ring-rum-200/50 hover:ring-rum-300 transition-all duration-500">
-          <div class="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-rum-100 flex items-center justify-center mb-3 sm:mb-4">
-            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-rum-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <div class="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-8 lg:gap-12 items-start">
+        <ol class="animate-on-scroll stagger-1 divide-y divide-rum-200/70 rounded-[2rem] bg-white ring-1 ring-rum-200/50 overflow-hidden">
+          <li class="flex gap-4 p-5 sm:p-6">
+            <div class="w-11 h-11 rounded-full bg-rum-100 flex items-center justify-center flex-shrink-0 font-display font-bold text-rum-700">1</div>
+            <div>
+              <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-1">Cubaanse witte rum</p>
+              <p class="text-rum-800 text-sm sm:text-base">60 ml Havana Club 3 Años of een andere lichte Cubaanse rum.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 p-5 sm:p-6">
+            <div class="w-11 h-11 rounded-full bg-lime-light flex items-center justify-center flex-shrink-0 font-display font-bold text-lime-dark">2</div>
+            <div>
+              <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-1">Verse limoen</p>
+              <p class="text-rum-800 text-sm sm:text-base">Sap van een halve limoen plus 2 tot 3 partjes.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 p-5 sm:p-6">
+            <div class="w-11 h-11 rounded-full bg-rum-100 flex items-center justify-center flex-shrink-0 font-display font-bold text-rum-700">3</div>
+            <div>
+              <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-1">Rietsuiker</p>
+              <p class="text-rum-800 text-sm sm:text-base">2 theelepels voor de klassieke zoetheid.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 p-5 sm:p-6">
+            <div class="w-11 h-11 rounded-full bg-mint-100 flex items-center justify-center flex-shrink-0 font-display font-bold text-mint-800">4</div>
+            <div>
+              <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-1">Hierbabuena</p>
+              <p class="text-rum-800 text-sm sm:text-base">5 tot 7 takjes munt, plus een topje voor de geur.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 p-5 sm:p-6">
+            <div class="w-11 h-11 rounded-full bg-soda-100 flex items-center justify-center flex-shrink-0 font-display font-bold text-soda-600">5</div>
+            <div>
+              <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-1">Spuitwater</p>
+              <p class="text-rum-800 text-sm sm:text-base">Een klein scheutje bruisend water als afronding.</p>
+            </div>
+          </li>
+        </ol>
+
+        <aside class="animate-on-scroll stagger-2 rounded-[2rem] bg-rum-50 p-8 ring-1 ring-rum-200/50">
+          <p class="font-display text-2xl font-bold text-rum-800 mb-4">Weinig ingrediënten, strak resultaat</p>
+          <p class="text-rum-800 leading-relaxed">
+            Een goede mojito draait niet om veel onderdelen maar om helderheid: frisse rum,
+            zachte munt, direct limoen en genoeg ijs om de drank koel te houden zonder hem waterig te maken.
+          </p>
+          <div class="mt-6 space-y-3 text-sm text-rum-800">
+            <p><span class="font-semibold text-rum-900">Niet toevoegen:</span> mixen, siroop of crushed ice.</p>
+            <p><span class="font-semibold text-rum-900">Wel doen:</span> zacht stampen, proeven en pas daarna afmaken met spuitwater.</p>
           </div>
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-2">Cubaanse witte rum</p>
-          <p class="text-rum-800 text-sm">60 ml Havana Club 3 Años of een andere lichte Cubaanse rum</p>
-        </div>
-        
-        <!-- Lime -->
-        <div class="ingredient-card animate-on-scroll stagger-2 p-5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl ring-1 ring-rum-200/50 hover:ring-rum-300 transition-all duration-500">
-          <div class="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-lime-light flex items-center justify-center mb-3 sm:mb-4">
-            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-lime-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-2">Verse limoen</p>
-          <p class="text-rum-800 text-sm">Sap van een halve limoen + 2 tot 3 partjes</p>
-        </div>
-        
-        <!-- Sugar -->
-        <div class="ingredient-card animate-on-scroll stagger-3 p-5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl ring-1 ring-rum-200/50 hover:ring-rum-300 transition-all duration-500">
-          <div class="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-rum-100 flex items-center justify-center mb-3 sm:mb-4">
-            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-rum-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          </div>
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-2">Rietsuiker</p>
-          <p class="text-rum-800 text-sm">2 theelepels rietsuiker</p>
-        </div>
-        
-        <!-- Mint -->
-        <div class="ingredient-card animate-on-scroll stagger-4 p-5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl ring-1 ring-rum-200/50 hover:ring-rum-300 transition-all duration-500">
-          <div class="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-mint-100 flex items-center justify-center mb-3 sm:mb-4">
-            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-mint-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          </div>
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-2">Munt</p>
-          <p class="text-rum-800 text-sm">5-7 takjes hierbabuena, plus 1 topje voor de geur</p>
-        </div>
-        
-        <!-- Soda -->
-        <div class="ingredient-card animate-on-scroll stagger-5 p-5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl ring-1 ring-rum-200/50 hover:ring-rum-300 transition-all duration-500">
-          <div class="icon-wrapper w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-soda-100 flex items-center justify-center mb-3 sm:mb-4">
-            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-soda-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-          </div>
-          <p class="font-display text-lg sm:text-xl font-bold text-rum-800 mb-2">Spuitwater</p>
-          <p class="text-rum-800 text-sm">Een scheutje bruisend water</p>
-        </div>
-        
+        </aside>
       </div>
     </div>
   </section>
@@ -408,64 +413,44 @@
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Rum -->
-        <div class="animate-on-scroll stagger-1 bg-rum-50 rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-full bg-rum-100 flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-rum-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="font-display text-2xl font-bold text-rum-800 mb-3">Waarom witte rum</h3>
+      <div class="grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] gap-8 lg:gap-12 items-start">
+        <article class="animate-on-scroll stagger-1">
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-rum-800 mb-4">Waarom witte rum</h3>
           <p class="text-rum-800 leading-relaxed">
-            Witte rum is het hart van elke mojito en vormt het alcoholische fundament. In Cuba wordt meestal een lichte, droge stijl gebruikt. Kies vooral een rum die fris en schoon smaakt, zodat munt en limoen de hoofdrol houden.
+            Witte rum is het hart van elke mojito en vormt het alcoholische fundament.
+            In Cuba wordt meestal een lichte, droge stijl gebruikt. Kies vooral een rum die fris en schoon smaakt,
+            zodat munt en limoen de hoofdrol houden.
           </p>
           <p class="text-rum-800 leading-relaxed mt-4">
             Mijn advies voor de klassieke mojito is
             <a href="https://havana-club.com/nl-BE/rum/havana-club-3-anos/" class="underline decoration-rum-300 underline-offset-4 hover:text-rum-900" target="_blank" rel="noopener noreferrer"><strong>Havana Club 3 Años als basisrum</strong></a>:
-            licht gerijpt, fris, groen en precies de Cubaanse standaard waar mojito's en daiquiri's op drijven.
+            licht gerijpt, fris en precies de Cubaanse standaard waar mojito's en daiquiri's op drijven.
           </p>
           <p class="text-rum-800 leading-relaxed mt-4">
             Wil je een ronder en iets zachter profiel, dan is
-            <a href="https://havana-club.com/nl-BE/rum/havana-club-especial/" class="underline decoration-rum-300 underline-offset-4 hover:text-rum-900" target="_blank" rel="noopener noreferrer"><strong>Havana Club Especial als zachtere variant</strong></a>
-            een mooie gouden variant: soepeler, fruitiger en veelzijdig, zonder de cocktail meteen zwaar te maken.
+            <a href="https://havana-club.com/nl-BE/rum/havana-club-especial/" class="underline decoration-rum-300 underline-offset-4 hover:text-rum-900" target="_blank" rel="noopener noreferrer"><strong>Havana Club Especial</strong></a>
+            een mooie variant: soepeler, fruitiger en veelzijdig, zonder de cocktail meteen zwaar te maken.
           </p>
-          <div class="mt-6 grid grid-cols-2 gap-4">
-            <a href="https://havana-club.com/nl-BE/rum/havana-club-3-anos/" class="group rounded-2xl bg-white p-4 ring-1 ring-rum-200/60 hover:ring-rum-300 transition-colors" target="_blank" rel="noopener noreferrer">
-              <img src="images/havana-club-3-anos.jpg" alt="Fles Havana Club 3 Años" class="h-44 w-full object-contain">
-              <p class="mt-3 text-sm font-semibold text-rum-800 group-hover:text-rum-900">Havana Club 3 Años</p>
-            </a>
-            <a href="https://havana-club.com/nl-BE/rum/havana-club-especial/" class="group rounded-2xl bg-white p-4 ring-1 ring-rum-200/60 hover:ring-rum-300 transition-colors" target="_blank" rel="noopener noreferrer">
-              <img src="images/havana-club-especial.jpg" alt="Fles Havana Club Especial" class="h-44 w-full object-contain">
-              <p class="mt-3 text-sm font-semibold text-rum-800 group-hover:text-rum-900">Havana Club Especial</p>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Mint -->
-        <div class="animate-on-scroll stagger-2 bg-mint-100 rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          </div>
-          <h3 class="font-display text-2xl font-bold text-rum-800 mb-3">Waarom verse munt</h3>
-          <p class="text-rum-800 leading-relaxed">
-            Verse munt is onmisbaar voor de klassieke mojito-ervaring. Traditioneel is hierbabuena favoriet, met een zachter en frisser aroma dan pepermunt; buiten Cuba werkt een milde spearmint meestal het best als alternatief. Kneus de blaadjes voorzichtig zodat de oliën vrijkomen zonder dat de drank bitter wordt.
-          </p>
-        </div>
-        
-        <!-- Lime -->
-        <div class="animate-on-scroll stagger-3 bg-lime-light rounded-3xl p-8">
-          <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-lime-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="font-display text-2xl font-bold text-rum-800 mb-3">Waarom limoen</h3>
-          <p class="text-rum-800 leading-relaxed">
-            Limoen zorgt voor spanning en frisheid. Vers sap werkt het best; de partjes geven bovendien extra citrusolie af tijdens het roeren. Samen met de suiker houdt dat de cocktail levendig in plaats van scherp.
-          </p>
-        </div>
+        </article>
+
+        <aside class="animate-on-scroll stagger-2 rounded-[2rem] bg-rum-50 p-8 ring-1 ring-rum-200/50">
+          <h3 class="font-display text-2xl font-bold text-rum-800 mb-5">De balans in drie regels</h3>
+          <ul class="space-y-4">
+            <li class="border-l-2 border-rum-200 pl-4">
+              <p class="font-semibold text-rum-900">Rum</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Licht, droog en schoon van smaak.</p>
+            </li>
+            <li class="border-l-2 border-mint-300 pl-4">
+              <p class="font-semibold text-rum-900">Munt</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Zacht kneuzen, niet kapot stampen.</p>
+            </li>
+            <li class="border-l-2 border-lime-400 pl-4">
+              <p class="font-semibold text-rum-900">Limoen</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Vers sap, geen mix en geen kunstmatige zoetheid.</p>
+            </li>
+          </ul>
+        </aside>
       </div>
-      
-      <p class="text-center text-rum-700 mt-10 text-lg italic animate-on-scroll">
-        Na het proeven van deze echte Mojito wil je nooit meer een pre-mix uit een blikje of flesje.
-      </p>
     </div>
   </section>
 
@@ -614,23 +599,23 @@
                 <div class="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-3">
                   <picture class="block">
                     <source srcset="images/webp/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life-400.webp 400w, images/webp/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life.jpg" alt="Bos verse munt voor een klassieke mojito" class="w-full h-20 rounded-lg object-cover">
+                    <img src="images/mint-bunch-green-leafy-plant-fresh-herb-gourmet-kitchen-still-life.jpg" alt="Bos verse munt voor een klassieke mojito" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
                   </picture>
                   <picture class="block">
                     <source srcset="images/webp/clear-ice-cubes-400.webp 400w, images/webp/clear-ice-cubes-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/clear-ice-cubes.jpg" alt="Heldere ijsklontjes voor een strakke mojito" class="w-full h-20 rounded-lg object-cover">
+                    <img src="images/clear-ice-cubes.jpg" alt="Heldere ijsklontjes voor een strakke mojito" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
                   </picture>
                   <picture class="block">
                     <source srcset="images/webp/colorful-plastic-cup-with-straws-400.webp 400w, images/webp/colorful-plastic-cup-with-straws-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/colorful-plastic-cup-with-straws.jpg" alt="Rietjes als detail voor het serveren van cocktails" class="w-full h-20 rounded-lg object-cover">
+                    <img src="images/colorful-plastic-cup-with-straws.jpg" alt="Rietjes als detail voor het serveren van cocktails" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
                   </picture>
                   <picture class="block">
                     <source srcset="images/webp/hoegaarden-glas-400.webp 400w, images/webp/hoegaarden-glas-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/hoegaarden-glas.jpg" alt="Karakteristiek Hoegaarden Witbier-glas als favoriete serveerkeuze" class="w-full h-20 rounded-lg object-cover">
+                    <img src="images/hoegaarden-glas.jpg" alt="Karakteristiek Hoegaarden Witbier-glas als favoriete serveerkeuze" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
                   </picture>
                   <picture class="block">
                     <source srcset="images/webp/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce-400.webp 400w, images/webp/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce-800.webp 800w" sizes="80px" type="image/webp">
-                    <img src="images/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce.jpg" alt="Verse limoenen en citrus voor garnering en sap" class="w-full h-20 rounded-lg object-cover">
+                    <img src="images/fresh-lemon-limes-bright-juicy-green-fruit-garnish-citrus-produce.jpg" alt="Verse limoenen en citrus voor garnering en sap" class="w-full h-20 rounded-lg object-cover" loading="lazy" decoding="async">
                   </picture>
                 </div>
               </div>
@@ -708,49 +693,47 @@
           </div>
         </div>
         
-        <div class="relative animate-on-scroll stagger-2">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-4">
-              <div class="bg-rum-400/20 rounded-2xl p-6">
-                <p class="font-display text-4xl font-bold text-rum-200">1585</p>
-                <p class="text-rum-200 text-sm">Vroege verhalen rond El Draque</p>
+        <aside class="relative animate-on-scroll stagger-2 rounded-[2rem] bg-citrus-dark/40 ring-1 ring-rum-400/25 p-8 md:p-10">
+          <p class="text-rum-300 text-xs uppercase tracking-[0.24em] mb-6">Tijdlijn</p>
+          <ol class="space-y-6">
+            <li class="flex gap-4 items-start">
+              <span class="w-12 h-12 rounded-full bg-rum-400 text-rum-950 flex items-center justify-center font-display font-bold flex-shrink-0">1585</span>
+              <div>
+                <p class="font-semibold text-rum-100">Vroege verhalen rond El Draque</p>
+                <p class="text-rum-200 text-sm">Een vroege voorloper waarin citrus, suiker en kruiden de ruwe drank zachter maakten.</p>
               </div>
-              <div class="bg-white/10 rounded-2xl p-6">
-                <p class="font-display text-4xl font-bold text-rum-100">1942</p>
-                <p class="text-rum-200 text-sm">La Bodeguita opent</p>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="w-12 h-12 rounded-full bg-white/10 text-rum-100 flex items-center justify-center font-display font-bold flex-shrink-0">1942</span>
+              <div>
+                <p class="font-semibold text-rum-100">La Bodeguita opent</p>
+                <p class="text-rum-200 text-sm">De bar die de Mojito in Havana een vaste plek gaf.</p>
               </div>
-            </div>
-            <div class="space-y-4 pt-8">
-              <div class="bg-white/10 rounded-2xl p-6">
-                <p class="font-display text-4xl font-bold text-rum-100">2002</p>
-                <p class="text-rum-200 text-sm">Wereldwijde popcultuurboost</p>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="w-12 h-12 rounded-full bg-white/10 text-rum-100 flex items-center justify-center font-display font-bold flex-shrink-0">2002</span>
+              <div>
+                <p class="font-semibold text-rum-100">Wereldwijde popcultuurboost</p>
+                <p class="text-rum-200 text-sm">De Mojito wordt een van de meest herkenbare cocktails ter wereld.</p>
               </div>
-              <div class="bg-rum-400/30 rounded-2xl p-6">
-                <p class="font-display text-4xl font-bold text-rum-200">Nu</p>
-                <p class="text-rum-200 text-sm">Wereldwijd fenomeen</p>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="w-12 h-12 rounded-full bg-rum-400/30 text-rum-100 flex items-center justify-center font-display font-bold flex-shrink-0">Nu</span>
+              <div>
+                <p class="font-semibold text-rum-100">Wereldwijd fenomeen</p>
+                <p class="text-rum-200 text-sm">Nog altijd klassiek, maar ook telkens opnieuw geïnterpreteerd.</p>
               </div>
-            </div>
-          </div>
-          
-          <!-- Hemingway Note -->
-          <div class="mt-8 bg-rum-400/20 rounded-2xl p-8 border border-rum-400/30">
-            <svg class="w-8 h-8 text-rum-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-            </svg>
-            <p class="font-display text-xl text-white italic mb-2">
-              Hemingway hoort onmiskenbaar bij het Havana-verhaal rond cocktails,
-              maar zijn naam wordt in toeristische vertellingen vaak losser gebruikt dan historici prettig vinden.
+            </li>
+          </ol>
+          <div class="mt-8 border-t border-rum-400/30 pt-6">
+            <p class="text-rum-200 text-sm leading-relaxed">
+              Hemingway hoort onmiskenbaar bij het Havana-verhaal rond cocktails, maar zijn naam wordt in toeristische vertellingen vaak losser gebruikt dan historici prettig vinden.
             </p>
-            <p class="text-rum-300 text-sm mb-4">— redactionele noot</p>
-            
-            <div class="border-t border-rum-400/30 pt-4 mt-4">
-              <p class="text-rum-400/60 text-xs italic">
-                * De beroemde quote "Mijn Mojito in La Bodeguita..." wordt vaak aangehaald,
-                maar geldt eerder als barlegende dan als hard gedocumenteerd citaat.
-              </p>
-            </div>
+            <p class="mt-4 text-rum-400/70 text-xs italic">
+              * De beroemde quote "Mijn Mojito in La Bodeguita..." wordt vaak aangehaald, maar geldt eerder als barlegende dan als hard gedocumenteerd citaat.
+            </p>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -790,33 +773,19 @@
       </div>
       
       <!-- Famous Quotes -->
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-rum-400/20 rounded-2xl p-6 text-left">
-          <svg class="w-6 h-6 text-rum-300 mb-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
-          <p class="font-display text-lg text-rum-100 italic">
-            El Floridita wordt meestal sterker met Hemingway verbonden dan La Bodeguita.
-          </p>
-          <p class="text-rum-200 text-sm mt-3">— historische consensus in grote lijnen</p>
-        </div>
-        
-        <div class="bg-rum-400/20 rounded-2xl p-6 text-left">
-          <svg class="w-6 h-6 text-rum-300 mb-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
-          <p class="font-display text-lg text-rum-100 italic">
-            De mojito-associatie leeft vooral voort omdat bars, toerisme en popcultuur elkaar zijn gaan versterken.
-          </p>
-          <p class="text-rum-200 text-sm mt-3">— context bij de legende</p>
-        </div>
-      </div>
-      
-      <div class="bg-white/10 rounded-2xl p-6 inline-block">
-        <p class="text-rum-200 text-sm">
-          <strong class="text-rum-100">Wist je?</strong> De
-          <strong class="text-rum-200">Papa Doble</strong> wordt veel consequenter met Hemingway verbonden
-          dan de Mojito. Daarom duikt hij in cocktailboeken vaker op als Daiquiri-icoon dan als mojito-ambassadeur.
+      <div class="animate-on-scroll stagger-2 max-w-3xl mx-auto rounded-[2rem] bg-rum-400/20 p-8 md:p-10 text-left ring-1 ring-rum-400/20">
+        <svg class="w-7 h-7 text-rum-300 mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <p class="font-display text-2xl md:text-3xl text-rum-100 italic leading-relaxed">
+          El Floridita wordt meestal sterker met Hemingway verbonden dan La Bodeguita.
+        </p>
+        <p class="text-rum-200 text-sm mt-4">
+          De mojito-associatie leeft vooral voort omdat bars, toerisme en popcultuur elkaar zijn gaan versterken.
+        </p>
+        <p class="mt-6 text-rum-100 text-sm leading-relaxed">
+          <strong>Wist je?</strong> De Papa Doble wordt veel consequenter met Hemingway verbonden dan de Mojito.
+          Daarom duikt hij in cocktailboeken vaker op als Daiquiri-icoon dan als mojito-ambassadeur.
         </p>
       </div>
     </div>
@@ -834,62 +803,62 @@
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
-        <!-- La Bodeguita -->
-        <div class="culture-card animate-on-scroll stagger-1 group relative overflow-hidden rounded-3xl">
-          <picture>
-            <source srcset="images/webp/bodeguita-del-medio-400.webp 400w, images/webp/bodeguita-del-medio-800.webp 800w, images/webp/bodeguita-del-medio-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-            <img src="images/bodeguita-del-medio.jpg" alt="Gevel en ingang van La Bodeguita del Medio in Havana" class="culture-card-img w-full h-80 object-cover" loading="lazy" width="3072" height="2304">
+      <div class="space-y-6 mb-16">
+        <article class="animate-on-scroll stagger-1 grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-0 overflow-hidden rounded-[2rem] bg-white ring-1 ring-rum-200/50">
+          <picture class="block">
+            <source srcset="images/webp/bodeguita-del-medio-400.webp 400w, images/webp/bodeguita-del-medio-800.webp 800w, images/webp/bodeguita-del-medio-1200.webp 1200w" sizes="(max-width: 1024px) 100vw, 42vw" type="image/webp">
+            <img src="images/bodeguita-del-medio.jpg" alt="Gevel en ingang van La Bodeguita del Medio in Havana" class="w-full h-full min-h-72 object-cover" loading="lazy" width="3072" height="2304">
           </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-citrus-dark/90 via-citrus-dark/40 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <span class="text-rum-300 text-sm uppercase tracking-wider">Legendarische Bar</span>
-            <h3 class="font-display text-2xl font-bold text-white mt-2">La Bodeguita del Medio</h3>
-            <p class="text-rum-200 mt-2 text-sm">De bakermat van de moderne Mojito in hartje Havana, sinds 1942.</p>
+          <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
+            <span class="text-rum-700 text-xs uppercase tracking-[0.22em] mb-3">Legendarische bar</span>
+            <h3 class="font-display text-3xl font-bold text-rum-900 mb-3">La Bodeguita del Medio</h3>
+            <p class="text-rum-800 leading-relaxed">
+              De bakermat van de moderne Mojito in hartje Havana, sinds 1942. De plek voelt minder als een showroom en meer als een levend barverhaal.
+            </p>
           </div>
-        </div>
-        
-        <!-- Havana Club -->
-        <div class="culture-card animate-on-scroll stagger-2 group relative overflow-hidden rounded-3xl">
-          <picture>
-            <source srcset="images/webp/havana-club-full-range-400.webp 400w, images/webp/havana-club-full-range-800.webp 800w, images/webp/havana-club-full-range-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-            <img src="images/havana-club-full-range.jpg" alt="Volledige Havana Club rumcollectie met verschillende flessen op display" class="culture-card-img w-full h-80 object-cover" loading="lazy" width="1000" height="667">
-          </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-citrus-dark/90 via-citrus-dark/40 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <span class="text-rum-300 text-sm uppercase tracking-wider">Het Hart</span>
-            <h3 class="font-display text-2xl font-bold text-white mt-2">Havana Club Rum</h3>
-            <p class="text-rum-200 mt-2 text-sm">De koning van Cubaanse rum, gemaakt met dezelfde passie als in 1934.</p>
-          </div>
-        </div>
-        
-        <!-- Buena Vista Social Club -->
-        <div class="culture-card animate-on-scroll stagger-3 group relative overflow-hidden rounded-3xl">
-          <picture>
-            <source srcset="images/webp/buena-vista-social-club-400.webp 400w, images/webp/buena-vista-social-club-800.webp 800w, images/webp/buena-vista-social-club-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-            <img src="images/buena-vista-social-club.jpg" alt="Buena Vista Social Club Orchestra op het podium tijdens een liveoptreden" class="culture-card-img w-full h-80 object-cover" loading="lazy" width="4779" height="2814">
-          </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-citrus-dark/90 via-citrus-dark/40 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <span class="text-rum-300 text-sm uppercase tracking-wider">Wereldwijde Herontdekking</span>
-            <h3 class="font-display text-2xl font-bold text-white mt-2">Buena Vista Social Club</h3>
-            <p class="text-rum-200 mt-2 text-sm">De warme son cubano van Buena Vista Social Club bracht, mede door Ry Cooder in 1997, de Cubaanse muziek opnieuw wereldwijd onder de aandacht.</p>
-          </div>
-        </div>
+        </article>
 
-        <!-- Havana Vieja -->
-        <div class="culture-card animate-on-scroll stagger-4 group relative overflow-hidden rounded-3xl">
-          <picture>
-            <source srcset="images/webp/havana-vieja-400.webp 400w, images/webp/havana-vieja-800.webp 800w, images/webp/havana-vieja-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-            <img src="images/havana-vieja.jpg" alt="Straatbeeld van Havana Vieja met koloniale gevels en klassieke Cubaanse auto" class="culture-card-img w-full h-80 object-cover" loading="lazy" width="1000" height="701">
+        <article class="animate-on-scroll stagger-2 grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-0 overflow-hidden rounded-[2rem] bg-rum-50 ring-1 ring-rum-200/50">
+          <picture class="block lg:order-2">
+            <source srcset="images/webp/havana-club-full-range-400.webp 400w, images/webp/havana-club-full-range-800.webp 800w, images/webp/havana-club-full-range-1200.webp 1200w" sizes="(max-width: 1024px) 100vw, 42vw" type="image/webp">
+            <img src="images/havana-club-full-range.jpg" alt="Volledige Havana Club rumcollectie met verschillende flessen op display" class="w-full h-full min-h-72 object-cover" loading="lazy" width="1000" height="667">
           </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-citrus-dark/90 via-citrus-dark/40 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
-            <span class="text-rum-300 text-sm uppercase tracking-wider">UNESCO Werelderfgoed</span>
-            <h3 class="font-display text-2xl font-bold text-white mt-2">Havana Vieja</h3>
-            <p class="text-rum-200 mt-2 text-sm">Oud-Havana staat sinds 1982 op de UNESCO-werelderfgoedlijst en geeft de mojito zijn meest herkenbare decor van pleinen, pastelgevels en klassieke auto's.</p>
+          <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
+            <span class="text-rum-700 text-xs uppercase tracking-[0.22em] mb-3">Het hart</span>
+            <h3 class="font-display text-3xl font-bold text-rum-900 mb-3">Havana Club Rum</h3>
+            <p class="text-rum-800 leading-relaxed">
+              De koning van Cubaanse rum, gemaakt met dezelfde passie als in 1934. Eén duidelijke rumstijl geeft de Mojito zijn herkenbare ruggengraat.
+            </p>
           </div>
-        </div>
+        </article>
+
+        <article class="animate-on-scroll stagger-3 grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-0 overflow-hidden rounded-[2rem] bg-white ring-1 ring-rum-200/50">
+          <picture class="block">
+            <source srcset="images/webp/buena-vista-social-club-400.webp 400w, images/webp/buena-vista-social-club-800.webp 800w, images/webp/buena-vista-social-club-1200.webp 1200w" sizes="(max-width: 1024px) 100vw, 42vw" type="image/webp">
+            <img src="images/buena-vista-social-club.jpg" alt="Buena Vista Social Club Orchestra op het podium tijdens een liveoptreden" class="w-full h-full min-h-72 object-cover" loading="lazy" width="4779" height="2814">
+          </picture>
+          <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
+            <span class="text-rum-700 text-xs uppercase tracking-[0.22em] mb-3">Wereldwijde herontdekking</span>
+            <h3 class="font-display text-3xl font-bold text-rum-900 mb-3">Buena Vista Social Club</h3>
+            <p class="text-rum-800 leading-relaxed">
+              De warme son cubano van Buena Vista Social Club bracht, mede door Ry Cooder in 1997, de Cubaanse muziek opnieuw wereldwijd onder de aandacht.
+            </p>
+          </div>
+        </article>
+
+        <article class="animate-on-scroll stagger-4 grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-0 overflow-hidden rounded-[2rem] bg-rum-50 ring-1 ring-rum-200/50">
+          <picture class="block lg:order-2">
+            <source srcset="images/webp/havana-vieja-400.webp 400w, images/webp/havana-vieja-800.webp 800w, images/webp/havana-vieja-1200.webp 1200w" sizes="(max-width: 1024px) 100vw, 42vw" type="image/webp">
+            <img src="images/havana-vieja.jpg" alt="Straatbeeld van Havana Vieja met koloniale gevels en klassieke Cubaanse auto" class="w-full h-full min-h-72 object-cover" loading="lazy" width="1000" height="701">
+          </picture>
+          <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
+            <span class="text-rum-700 text-xs uppercase tracking-[0.22em] mb-3">UNESCO werelderfgoed</span>
+            <h3 class="font-display text-3xl font-bold text-rum-900 mb-3">Havana Vieja</h3>
+            <p class="text-rum-800 leading-relaxed">
+              Oud-Havana staat sinds 1982 op de UNESCO-werelderfgoedlijst en geeft de mojito zijn meest herkenbare decor van pleinen, pastelgevels en klassieke auto's.
+            </p>
+          </div>
+        </article>
       </div>
 
       <p class="text-center text-rum-700 text-sm mb-16">
@@ -928,86 +897,57 @@
         </p>
       </div>
       
-      <div class="grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-6 lg:gap-8 items-start">
+      <div class="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-8 lg:gap-12 items-start">
         <article class="animate-on-scroll stagger-1 bg-white rounded-[2rem] p-8 sm:p-10 ring-1 ring-rum-200/60 shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-8">
             <div class="max-w-xl">
               <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-rum-100 text-rum-700 text-xs font-semibold tracking-[0.16em] uppercase rounded-full mb-4">
                 Eerst Proeven
               </span>
-              <h3 class="font-display text-3xl sm:text-4xl font-bold text-rum-800 mb-3">Klassiek</h3>
+              <h3 class="font-display text-3xl sm:text-4xl font-bold text-rum-800 mb-3">Klassiek eerst</h3>
               <p class="text-rum-800 text-base sm:text-lg leading-relaxed">
                 Begin altijd met de klassieke Cubaanse versie. Zo proef je eerst de balans van rum,
                 limoen, rietsuiker, hierbabuena en spuitwater voordat je gaat variëren.
               </p>
             </div>
-            <div class="w-16 h-16 rounded-full bg-rum-100 flex items-center justify-center flex-shrink-0">
-              <svg class="w-8 h-8 text-rum-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </div>
           </div>
 
-          <div class="grid sm:grid-cols-3 gap-4">
+          <div class="grid sm:grid-cols-3 gap-4 text-sm">
             <div class="bg-rum-50 rounded-2xl p-5">
-              <p class="text-xs uppercase tracking-[0.18em] text-rum-700 mb-2">Smaak</p>
+              <p class="uppercase tracking-[0.18em] text-rum-700 mb-2">Smaak</p>
               <p class="font-display text-2xl text-rum-800">Strak & fris</p>
             </div>
             <div class="bg-rum-50 rounded-2xl p-5">
-              <p class="text-xs uppercase tracking-[0.18em] text-rum-700 mb-2">Balans</p>
+              <p class="uppercase tracking-[0.18em] text-rum-700 mb-2">Balans</p>
               <p class="font-display text-2xl text-rum-800">Zoet, zuur, kruidig</p>
             </div>
             <div class="bg-rum-50 rounded-2xl p-5">
-              <p class="text-xs uppercase tracking-[0.18em] text-rum-700 mb-2">Moment</p>
+              <p class="uppercase tracking-[0.18em] text-rum-700 mb-2">Moment</p>
               <p class="font-display text-2xl text-rum-800">Altijd eerst</p>
             </div>
           </div>
         </article>
 
-        <div class="grid gap-4 sm:gap-5">
-          <article class="animate-on-scroll stagger-2 bg-white rounded-[1.75rem] p-6 ring-1 ring-coral/20 shadow-sm sm:mr-10">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-full bg-coral-light flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-coral-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>
-              </div>
-              <div class="min-w-0">
-                <div class="flex items-center justify-between gap-3 mb-2">
-                  <h3 class="font-display text-2xl font-bold text-rum-800">Aardbei</h3>
-                  <span class="px-2.5 py-1 bg-coral-light text-coral-dark text-xs rounded-full flex-shrink-0">zoet</span>
-                </div>
-                <p class="text-rum-800 text-sm leading-relaxed">Voeg gemarineerde aardbeien toe voor een ronde, zomerse twist die de citrus zachter maakt.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="animate-on-scroll stagger-3 bg-rum-50 rounded-[1.75rem] p-6 ring-1 ring-rum-200/60 sm:ml-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-full bg-lime-light flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-lime-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-              </div>
-              <div class="min-w-0">
-                <div class="flex items-center justify-between gap-3 mb-2">
-                  <h3 class="font-display text-2xl font-bold text-rum-800">Passievrucht</h3>
-                  <span class="px-2.5 py-1 bg-lime-light text-lime-dark text-xs rounded-full flex-shrink-0">tropisch</span>
-                </div>
-                <p class="text-rum-800 text-sm leading-relaxed">Geeft extra geur en zachte zuren, zonder het ritme van de klassieke mojito helemaal te verliezen.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="animate-on-scroll stagger-4 bg-white rounded-[1.75rem] p-6 ring-1 ring-mint-200/70 shadow-sm">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-full bg-mint-100 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-mint-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-              </div>
-              <div class="min-w-0">
-                <div class="flex items-center justify-between gap-3 mb-2">
-                  <h3 class="font-display text-2xl font-bold text-rum-800">Extra Munt</h3>
-                  <span class="px-2.5 py-1 bg-mint-100 text-mint-700 text-xs rounded-full flex-shrink-0">fris</span>
-                </div>
-                <p class="text-rum-800 text-sm leading-relaxed">Voor wie vooral op geur drinkt: meer hierbabuena maakt de cocktail koeler en uitgesprokener.</p>
-              </div>
-            </div>
-          </article>
-        </div>
+        <aside class="animate-on-scroll stagger-2 rounded-[2rem] bg-rum-50 p-8 ring-1 ring-rum-200/50">
+          <h3 class="font-display text-2xl font-bold text-rum-800 mb-5">Drie variaties, kort</h3>
+          <ul class="space-y-4">
+            <li class="border-l-2 border-coral-300 pl-4">
+              <p class="font-semibold text-rum-900">Aardbei</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Rond, zomers en iets zachter van citrus.</p>
+            </li>
+            <li class="border-l-2 border-lime-400 pl-4">
+              <p class="font-semibold text-rum-900">Passievrucht</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Extra geur en frisse zuren, zonder de basis te verliezen.</p>
+            </li>
+            <li class="border-l-2 border-mint-300 pl-4">
+              <p class="font-semibold text-rum-900">Extra munt</p>
+              <p class="text-rum-800 text-sm leading-relaxed">Koeler en uitgesprokener voor wie vooral op aroma drinkt.</p>
+            </li>
+          </ul>
+          <p class="mt-6 text-sm italic text-rum-700">
+            Begin klassiek. Variaties zijn bijzaak, geen alternatief recept.
+          </p>
+        </aside>
       </div>
     </div>
   </section>
@@ -1058,11 +998,11 @@
         <div>
           <h4 class="font-display font-bold text-rum-200 mb-4">Navigatie</h4>
           <ul class="space-y-2">
-            <li><a href="#geschiedenis" aria-label="Naar de geschiedenissectie" class="text-rum-200 hover:text-rum-100 transition-colors">Geschiedenis sectie</a></li>
-            <li><a href="#recept" aria-label="Naar de receptsectie" class="text-rum-200 hover:text-rum-100 transition-colors">Recept sectie</a></li>
-            <li><a href="#hemingway" aria-label="Naar de Hemingwaysectie" class="text-rum-200 hover:text-rum-100 transition-colors">Hemingway sectie</a></li>
-            <li><a href="#cultuur" aria-label="Naar de cultuursectie" class="text-rum-200 hover:text-rum-100 transition-colors">Cultuur sectie</a></li>
-            <li><a href="#variaties" aria-label="Naar de variatiesectie" class="text-rum-200 hover:text-rum-100 transition-colors">Variaties sectie</a></li>
+            <li><a href="#geschiedenis" class="text-rum-200 hover:text-rum-100 transition-colors">Geschiedenis sectie</a></li>
+            <li><a href="#recept" class="text-rum-200 hover:text-rum-100 transition-colors">Recept sectie</a></li>
+            <li><a href="#hemingway" class="text-rum-200 hover:text-rum-100 transition-colors">Hemingway sectie</a></li>
+            <li><a href="#cultuur" class="text-rum-200 hover:text-rum-100 transition-colors">Cultuur sectie</a></li>
+            <li><a href="#variaties" class="text-rum-200 hover:text-rum-100 transition-colors">Variaties sectie</a></li>
           </ul>
         </div>
         <div>
@@ -1119,11 +1059,11 @@
       
       <!-- Navigation links - easy thumb reach -->
       <nav class="flex-1 space-y-2" aria-label="Mobiele navigatie">
-        <a href="#geschiedenis" aria-label="Naar de geschiedenissectie" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar geschiedenis</a>
-        <a href="#recept" aria-label="Naar de receptsectie" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar recept</a>
-        <a href="#hemingway" aria-label="Naar de Hemingwaysectie" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar Hemingway</a>
-        <a href="#cultuur" aria-label="Naar de cultuursectie" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar cultuur</a>
-        <a href="#variaties" aria-label="Naar de variatiesectie" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar variaties</a>
+        <a href="#geschiedenis" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar geschiedenis</a>
+        <a href="#recept" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar recept</a>
+        <a href="#hemingway" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar Hemingway</a>
+        <a href="#cultuur" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar cultuur</a>
+        <a href="#variaties" class="block py-3 px-4 font-display text-xl font-bold text-rum-800 hover:bg-rum-100 rounded-xl transition-colors min-h-[48px] flex items-center">Naar variaties</a>
       </nav>
       
       <!-- Footer with tagline -->
