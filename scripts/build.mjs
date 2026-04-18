@@ -57,25 +57,37 @@ function copyDirContents(sourceDir, targetDir) {
 
 function extractReferencedAssets(html) {
   const jpgs = new Set();
+  const jpegs = new Set();
   const pngs = new Set();
+  const directWebps = new Set();
   const webps = new Set();
   const jpgPattern = /images\/([^\s",'?]+\.jpg)/g;
+  const jpegPattern = /images\/([^\s",'?]+\.jpeg)/g;
   const pngPattern = /images\/([^\s",'?]+\.png)/g;
+  const directWebpPattern = /images\/((?!webp\/)[^\s",'?]+\.webp)/g;
   const webpPattern = /images\/webp\/([^\s",'?]+\.webp)/g;
 
   for (const match of html.matchAll(jpgPattern)) {
     jpgs.add(match[1]);
   }
 
+  for (const match of html.matchAll(jpegPattern)) {
+    jpegs.add(match[1]);
+  }
+
   for (const match of html.matchAll(pngPattern)) {
     pngs.add(match[1]);
+  }
+
+  for (const match of html.matchAll(directWebpPattern)) {
+    directWebps.add(match[1]);
   }
 
   for (const match of html.matchAll(webpPattern)) {
     webps.add(match[1]);
   }
 
-  return { jpgs, pngs, webps };
+  return { jpgs, jpegs, pngs, directWebps, webps };
 }
 
 function makeWebp(sourceFile, outputFile, width, quality = 82) {
@@ -158,10 +170,35 @@ for (const file of referencedAssets.jpgs) {
   console.warn(`[build] Referenced image missing: ${file}`);
 }
 
+for (const file of referencedAssets.jpegs) {
+  const optimizedSource = path.join(imagesSourceDir, file);
+  const localSource = path.join(root, 'images', file);
+  if (existsSync(optimizedSource)) {
+    copyFileSync(optimizedSource, path.join(imagesDir, file));
+    continue;
+  }
+
+  if (existsSync(localSource)) {
+    copyFileSync(localSource, path.join(imagesDir, file));
+    continue;
+  }
+
+  console.warn(`[build] Referenced JPEG missing: ${file}`);
+}
+
 for (const file of referencedAssets.pngs) {
   const source = path.join(root, 'images', file);
   if (!existsSync(source)) {
     console.warn(`[build] Referenced PNG missing: ${file}`);
+    continue;
+  }
+  copyFileSync(source, path.join(imagesDir, file));
+}
+
+for (const file of referencedAssets.directWebps) {
+  const source = path.join(root, 'images', file);
+  if (!existsSync(source)) {
+    console.warn(`[build] Referenced WebP missing: ${file}`);
     continue;
   }
   copyFileSync(source, path.join(imagesDir, file));
@@ -178,8 +215,15 @@ if (cwebpCommand) {
     const [, base, width] = match;
     const jpgSource = path.join(imagesSourceDir, `${base}.jpg`);
     const localJpgSource = path.join(root, 'images', `${base}.jpg`);
+    const localJpegSource = path.join(root, 'images', `${base}.jpeg`);
     const pngSource = path.join(root, 'images', `${base}.png`);
-    const source = existsSync(jpgSource) ? jpgSource : existsSync(localJpgSource) ? localJpgSource : pngSource;
+    const source = existsSync(jpgSource)
+      ? jpgSource
+      : existsSync(localJpgSource)
+        ? localJpgSource
+        : existsSync(localJpegSource)
+          ? localJpegSource
+          : pngSource;
     if (!existsSync(source) && base !== 'logo') {
       console.warn(`[build] Missing source for WebP variant: ${variant}`);
       continue;
